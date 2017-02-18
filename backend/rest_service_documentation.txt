@@ -1,0 +1,88 @@
+GET /todo
+response status code: 200
+response type: object list
+returns:
+[
+
+  {
+
+    "id": 1,
+
+    "status": "OPEN",
+
+    "name": "task 1"
+
+  },
+
+  {
+
+    "id": 2,
+
+    "status": "OPEN",
+
+    "name": "task 2"
+
+  },
+
+  {
+
+    "id": 3,
+
+    "status": "CLOSED",
+
+    "name": "task 3"
+
+  }
+
+]
+
+POST /new
+request body:
+  {
+
+    "name": "task 1"
+
+  }
+response status code: 200
+response type: boolean
+returns:
+   true - todo is added correctly
+   false - todo isn't added to list, possible reasons:
+      - todo name/text is null or empty
+      - todo with the same name/text already exists (no matter if it's open or closed)
+      - todo name/text is longer than 100 characters
+
+
+PUT /edit
+request body:
+  {
+
+    "id": 1,
+
+    "status": "OPEN",
+
+    "name": "task 1 edit"
+
+  }
+requirements:
+   status:
+      - possible values: "OPEN", "CLOSED"
+response status code: 200
+response type: boolean
+returns:
+   true - todo is edited correctly
+   false - todo isn't edited, possible reasons:
+      - there is no todo with specified id
+      - status is null
+      - todo name/text is null or empty
+      - todo name/text is longer than 100 characters
+      - other todo with the same name/text exists
+
+
+DELETE /delete/{id}
+response status code: 200
+response type: boolean
+returns:
+   true - todo is deleted correctly
+   false - todo isn't deleted, possible reasons:
+      - there is no todo with specified id

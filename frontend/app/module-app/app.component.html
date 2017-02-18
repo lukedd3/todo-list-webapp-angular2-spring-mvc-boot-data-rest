@@ -1,0 +1,73 @@
+<div class="container">
+
+	<div class="app-title">
+		<h1>Todo app</h1>
+	</div>
+	
+	<div *ngFor="let todo of todos" >
+	
+		<div class="row" *ngIf="edit.editMode==false || todo.id!=edit.modifiedTodo.id">
+			<div class="panel panel-default ">
+				<div class="panel-body">
+					<div class="col-xs-10">
+						<p [ngClass]='{"todo-closed-custom": todo.status == "CLOSED"}' > {{todo.name}} </p>
+					</div>
+					<div class="col-xs-2">
+						<form class="form-inline-block-custom"(ngSubmit)='deleteTodoClick(todo.id)'>
+							<button type="submit" class="btn btn-default btn-lg"><i class="fa fa-trash" aria-hidden="true"></i></button>
+						</form>
+						<form class="form-inline-block-custom" (ngSubmit)="enableEditModeTodoClick(todo)">
+							<button type="submit" class="btn btn-default btn-lg"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="row" *ngIf="edit.editMode==true && todo.id==edit.modifiedTodo.id">
+			<div class="panel panel-default ">
+				<div class="panel-body">
+					<div class="row">
+						<form (ngSubmit)='saveEditedTodoClick({id: todo.id, name: nameholder.value, status: box.checked? "CLOSED" : "OPEN"})'>
+								<div class="col-xs-9">
+									<input required #nameholder class="form-control" type='text' maxlength="100" [value]="todo.name" >
+									<div type="danger" class="alert alert-danger alert-custom" *ngIf="todoWithSpecifiedNameAlreadyExists">
+										<strong>Todo with specified name already exists</strong>
+									</div>
+								</div>
+								<div class="col-xs-1">
+									<label>
+										<input #box class="form-control" type="checkbox" [checked]="(todo.status == 'CLOSED')" (change)="0">
+										{{box.checked? "CLOSED" : "OPEN"}}
+									</label>
+								</div>
+								<div class="col-xs-2">
+									<button type="submit" class="btn btn-default btn-lg" >
+										<i class="fa fa-check" aria-hidden="true"></i>
+									</button>
+									<button type ="button" class="btn btn-default btn-lg" (click)="disableEditModeTodoClick()">
+										<i class="fa fa-times" aria-hidden="true"></i>
+									</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>	
+		</div>
+	
+	</div>
+	
+	<form (ngSubmit)="addTodoClick()">
+		<div class="row">
+			<input required autocomplete="off" maxlength="100" class="form-control col-xs-12" type='text' placeholder="Todo name" [(ngModel)]="nameToAddInput" name="nameToAddInput" (change)="0">
+			<button type="submit" class="btn btn-default btn-lg btn-add-custom col-xs-12">
+				<i class="fa fa-plus-square" aria-hidden="true"></i> Add new
+			</button>
+			<div type="danger" class="alert alert-danger alert-custom col-xs-12" *ngIf="todoWithSpecifiedNameAlreadyExists && !edit.editMode">
+				<strong>Todo with specified name already exists</strong>
+			</div>
+		</div>
+	</form>
+	
+</div>
+
