@@ -18,7 +18,6 @@ To run app in development mode type:
 ```
 npm start
 ```
-## Interationalization routing description
 
 ## License
 
