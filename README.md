@@ -3,6 +3,12 @@ Todo app. Frontend is made in Angular 2 and is based on angular-quickstart proje
 
 ## Running backend
 
+`mvn clean spring-boot:run` <- Runs app with dev profile. Uses integrated Tomcat and H2 database in file mode. Database file is saved in project directory. Running app url: http://localhost:8080/
+`mvn clean tomcat7:run` -Ptestenv -DskipTests <- Runs app with test profile. Uses Tomcat that is installed on system. Uses installed on sysyem PosgreSQL database. Information about database connection is in "application-testenv.properties" file. Running app url: http://localhost:8080/
+`mvn clean test` <- Runs unit tests
+`mvn clean integration-test` <- Runs unit tests and integration tests
+
+
 ## Running frontend in development mode
 
 You need to have NodeJS and Npm installed before you can do things described below.
