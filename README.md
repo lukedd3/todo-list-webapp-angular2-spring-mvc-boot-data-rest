@@ -3,6 +3,12 @@ Todo app. Frontend is made in Angular 2 and is based on angular-quickstart proje
 
 ## Description
 
+## Screenshots
+
+![Running Project Screenshot1](https://raw.githubusercontent.com/lukedd3/todo-list-webapp-angular2-spring-mvc-boot-data-rest/master/readme-assets/screenshot1.png)
+
+![Running Project Screenshot2](https://raw.githubusercontent.com/lukedd3/todo-list-webapp-angular2-spring-mvc-boot-data-rest/master/readme-assets/screenshot2.png)
+
 ## Running backend
 
 `mvn clean spring-boot:run` <- Runs app with dev profile. Uses integrated Tomcat and H2 database in file mode. Database file is saved in project directory. Running app url: http://localhost:8080/
