@@ -1,8 +1,6 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-frontend/node_modules
-
 ### STS ###
 .apt_generated
 .classpath
@@ -24,3 +22,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### Other ###
+todolist.mv.db
